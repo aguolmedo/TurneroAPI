@@ -26,12 +26,12 @@ AppRoutes.forEach((route) => {
 const startServer = async () => {
     await app.listen(process.env.PORT || 8080, () => {
         console.log(
-            `Server running on http://127.0.0.1:${ process.env.PORT } \ntest endpoint on http://127.0.0.1:3000/holamundo`);
+            `-- ${new Date()} --\n-- Server running on http://127.0.0.1:${ process.env.PORT } -- \n-- Test endpoint on http://127.0.0.1:3000/holamundo --`);
     });
 };
 
 (async () =>
 {
-    await connectDB();
     await startServer();
+    await connectDB();
 })();
