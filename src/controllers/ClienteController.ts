@@ -6,7 +6,16 @@ import {ClienteService} from "../services/ClienteService";
 let _clienteService = container.get<ClienteService>(Types.ClienteService);
 
 export async function getAll(request: Request, response: Response) {
-    return response.status(200).json(await _clienteService.getAll())
+    try {
+        let clientes = await _clienteService.getAll();
+        if (!response) {response.status(404).json("Error, no se pudieron encontrar clientes, es posible que no haya ninguno registrado")}
+        response.status(200).json(clientes);
+    }
+    catch (e) {
+        response.status(409).json("Hubo un error al obtener los clientes");
+    }
+
+
 }
 
 export const ClientServiceController =

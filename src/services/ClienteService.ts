@@ -1,6 +1,5 @@
 import { injectable } from "inversify";
 import { getManager } from "typeorm";
-import { plainToClass } from "class-transformer";
 import {IClienteService} from "./interface/IClienteService";
 import {Cliente} from "../entities/Cliente";
 
@@ -21,8 +20,12 @@ export class ClienteService implements IClienteService {
             return clientes;
         }
         catch(error) {
+
             console.error('Error al obtener los clientes desde BD.' +
-                '\nDetalles' + error);
+                '\nDetalles:\n' + error);
+
+            return;
+
         }
     }
 }
