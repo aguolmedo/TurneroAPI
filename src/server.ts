@@ -2,6 +2,7 @@ import "reflect-metadata";
 import bodyParser from 'body-parser';
 import Express, { Request, Response } from 'express';
 import {AppRoutes} from "./routes";
+import {connectDB} from "./database";
 
 require('dotenv').config();
 
@@ -31,5 +32,6 @@ const startServer = async () => {
 
 (async () =>
 {
+    await connectDB();
     await startServer();
 })();
