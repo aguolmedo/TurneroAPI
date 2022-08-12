@@ -3,6 +3,8 @@ import {Turno} from "../entities/Turno";
 import {TurnoModel} from "./TurnoModel";
 
 export class ProfesionalModel {
+    @Expose({name: 'dni'})
+    dni: string;
     @Expose({name: 'nroTelefono'})
     nroTelefono: string;
     @Expose({name: 'nombre'})
