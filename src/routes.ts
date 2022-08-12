@@ -2,6 +2,7 @@ import {FirstServiceController} from "./controllers/FirstServiceController";
 import {ClienteService} from "./services/ClienteService";
 import {ClientServiceController} from "./controllers/ClienteController";
 import {ProfesionalServiceController} from "./controllers/ProfesionalController";
+import {TurnosServiceController} from "./controllers/TurnoController";
 
 
 export const AppRoutes = [
@@ -39,5 +40,11 @@ export const AppRoutes = [
         path: '/profesional',
         method: 'post',
         action: ProfesionalServiceController.create,
+    },
+    {
+        path: '/turnos',
+        method: 'get',
+        action: TurnosServiceController.getAll
     }
+
 ];
