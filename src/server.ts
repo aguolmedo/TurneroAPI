@@ -2,6 +2,7 @@ import "reflect-metadata";
 import bodyParser from 'body-parser';
 import Express, { Request, Response } from 'express';
 import {AppRoutes} from "./routes";
+import {connectDB} from "./database";
 
 require('dotenv').config();
 
@@ -25,11 +26,12 @@ AppRoutes.forEach((route) => {
 const startServer = async () => {
     await app.listen(process.env.PORT || 8080, () => {
         console.log(
-            `Server running on http://127.0.0.1:${ process.env.PORT } \ntest endpoint on http://127.0.0.1:3000/holamundo`);
+            `-- ${new Date()} --\n-- Server running on http://127.0.0.1:${ process.env.PORT } -- \n-- Test endpoint on http://127.0.0.1:3000/holamundo --`);
     });
 };
 
 (async () =>
 {
     await startServer();
+    await connectDB();
 })();

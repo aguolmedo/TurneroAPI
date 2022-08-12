@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"como vas a testear?? no seas trolo man\" && exit 1",
     "start": "nodemon"
   },
   "keywords": [],
@@ -20,9 +20,14 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "class-transformer": "^0.5.1",
     "dotenv": "^16.0.1",
     "env": "^0.0.2",
     "express": "^4.18.1",
-    "reflect-metadata": "^0.1.13"
+    "inversify": "^6.0.1",
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.7",
+    "typeorm-model-generator": "^0.4.6"
   }
 }
