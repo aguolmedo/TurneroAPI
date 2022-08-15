@@ -1,14 +1,13 @@
 import {Expose} from "class-transformer";
-import {TurnoModel} from "./TurnoModel";
 
 
 export class ClienteModel {
 
-    constructor(nroTelefono: string, nombre: string, apellido: string, turnos: TurnoModel[]) {
+    constructor(nroTelefono: string, nombre: string, apellido: string) {
         this.nroTelefono = nroTelefono;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.turnos = turnos;
+
     }
 
     @Expose({name: 'nroTelefono'})
@@ -17,6 +16,5 @@ export class ClienteModel {
     nombre: string;
     @Expose({name: 'apellido'})
     apellido: string;
-    @Expose({name: 'turnos'})
-    turnos: TurnoModel[]
+
 }

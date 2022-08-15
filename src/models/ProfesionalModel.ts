@@ -1,8 +1,15 @@
 import {Expose} from "class-transformer";
-import {Turno} from "../entities/Turno";
-import {TurnoModel} from "./TurnoModel";
+
 
 export class ProfesionalModel {
+
+
+    constructor(nroTelefono: string, nombre: string, apellido: string) {
+        this.nroTelefono = nroTelefono;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
     @Expose({name: 'dni'})
     dni: string;
     @Expose({name: 'nroTelefono'})
@@ -11,6 +18,5 @@ export class ProfesionalModel {
     nombre: string;
     @Expose({name: 'apellido'})
     apellido: string;
-    @Expose({name: 'turnos'})
-    turnos: TurnoModel[];
+
 }
