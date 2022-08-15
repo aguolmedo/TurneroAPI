@@ -16,7 +16,20 @@ export async function getAll(request: Request, response: Response) {
     }
 }
 
+export async function getByCliente(request: Request, response: Response) {
+    try {
+        let turnos = await _turnosService.getByCliente(request.params.nroTelefono);
+        if (!response) {
+            response.status(404).json("Error, no se pudo encontrar ningun turno asociado al nroTelefono: " + request.params.nroTelefono);
+        }
+        response.status(200).json(turnos);
+    } catch (e) {
+        response.status(409).json("Hubo un error al obtener los turnos");
+    }
+}
+
 export const TurnosServiceController =
     {
-        getAll
+        getAll,
+        getByCliente
     }
