@@ -10,8 +10,7 @@ export class ProfesionalModel {
         this.apellido = apellido;
     }
 
-    @Expose({name: 'dni'})
-    dni: string;
+
     @Expose({name: 'nroTelefono'})
     nroTelefono: string;
     @Expose({name: 'nombre'})

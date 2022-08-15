@@ -50,5 +50,10 @@ export const AppRoutes = [
         path: '/turno/:nroTelefono',
         method: 'get',
         action: TurnosServiceController.getByCliente
+    },
+    {
+        path: '/turno',
+        method: 'post',
+        action: TurnosServiceController.create
     }
 ];

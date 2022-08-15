@@ -28,8 +28,19 @@ export async function getByCliente(request: Request, response: Response) {
     }
 }
 
+export async function create(request: Request, response: Response) {
+    try {
+        let respuesta = await _turnosService.create(request.body)
+        if (respuesta) return response.status(200).json(respuesta)
+    } catch (error) {
+        return response.status(409).json(error)
+    }
+}
+
+
 export const TurnosServiceController =
     {
         getAll,
-        getByCliente
+        getByCliente,
+        create
     }

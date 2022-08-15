@@ -89,5 +89,27 @@ export class TurnosService implements ITurnosService {
 
     }}
 
+    public async create(body :Turno) {
+        try {
+            await getManager()
+                .createQueryBuilder()
+                .insert()
+                .into(Turno)
+                .values( [{
+                    fechaHoraInicio: body.fechaHoraInicio,
+                    confirmado: body.confirmado,
+                    fechaHoraFin: body.fechaHoraFin,
+                    cliente: body.cliente,
+                    profesional: body.profesional
+                    }])
+                .execute();
+            console.log("-- Se ejecutó con exito una peticion a /turno --")
+            return "Turno creado."
+        }
+        catch (e) {
+            return e;
+        }
+    }
+
 }
 
