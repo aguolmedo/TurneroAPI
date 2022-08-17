@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import Express, { Request, Response } from 'express';
 import {AppRoutes} from "./routes";
 import {connectDB} from "./database";
+import {checkSchema, validationResult} from "express-validator";
 
 require('dotenv').config();
 
@@ -14,7 +15,13 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 
 AppRoutes.forEach((route) => {
-        app.use(route.path,(request: Request, response: Response, next: Function) => {
+        app.use(route.path,
+            checkSchema(route.schema),
+            (request: Request, response: Response, next: Function) => {
+            const errors = validationResult(request);
+            if (!errors.isEmpty()) {
+                return response.json(validationResult(request).array())
+            }
             route.action(request,response)
                 .then(()=> next)
                 .catch((err) => next(err));

@@ -89,7 +89,7 @@ export class TurnosService implements ITurnosService {
 
     }}
 
-    public async create(body :Turno) {
+    public async create(body: Turno) {
         try {
             await getManager()
                 .createQueryBuilder()
