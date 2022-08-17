@@ -32,16 +32,16 @@ export class Turno {
   profesional: string;
 
   @ManyToOne(() => Cliente, (cliente) => cliente.turnos, {
-    onDelete: "NO ACTION",
-    onUpdate: "NO ACTION",
+    onDelete: "RESTRICT",
+    onUpdate: "RESTRICT",
   })
   @JoinColumn([{ name: "cliente", referencedColumnName: "nroTelefono" }])
   cliente2: Cliente;
 
   @ManyToOne(() => Profesional, (profesional) => profesional.turnos, {
-    onDelete: "NO ACTION",
-    onUpdate: "NO ACTION",
+    onDelete: "RESTRICT",
+    onUpdate: "RESTRICT",
   })
-  @JoinColumn([{ name: "profesional", referencedColumnName: "dni" }])
+  @JoinColumn([{ name: "profesional", referencedColumnName: "nroTelefono" }])
   profesional2: Profesional;
 }

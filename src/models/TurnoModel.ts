@@ -5,7 +5,7 @@ import {ProfesionalModel} from "./ProfesionalModel";
 export class TurnoModel {
 
 
-    constructor(idTurno: number, fechaHoraInicio: number, confirmado: number, fechaHoraFin: number, cliente: ClienteModel, profesional: ProfesionalModel) {
+    constructor(idTurno: number, fechaHoraInicio: number, confirmado: boolean, fechaHoraFin: number, cliente: ClienteModel, profesional: ProfesionalModel) {
         this.idTurno = idTurno;
         this.fechaHoraInicio = fechaHoraInicio;
         this.confirmado = confirmado;
@@ -19,7 +19,7 @@ export class TurnoModel {
     @Expose({name: 'fechaHoraInicio'})
     fechaHoraInicio: number;
     @Expose({name: 'confirmado'})
-    confirmado: number;
+    confirmado: boolean;
     @Expose({name: 'fechaHoraFin'})
     fechaHoraFin: number;
     @Expose({name: 'cliente'})

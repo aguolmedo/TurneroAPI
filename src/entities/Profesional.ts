@@ -3,9 +3,7 @@ import { Turno } from "./Turno";
 
 @Entity("profesional", { schema: "turnos" })
 export class Profesional {
-  @Column("varchar", { primary: true, name: "dni", length: 45 }) dni: string;
-
-  @Column("varchar", { name: "nroTelefono", length: 45 })
+  @Column("varchar", {primary: true, name: "nroTelefono", length: 45 })
   nroTelefono: string;
 
   @Column("varchar", { name: "nombre", length: 45 })

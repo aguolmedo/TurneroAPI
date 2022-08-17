@@ -13,7 +13,6 @@ export class ProfesionalService implements IProfesionalService {
         try {
             const profesionales: any = getManager()
                 .createQueryBuilder(Profesional, "p")
-                .addSelect("p.dni", "din")
                 .addSelect("p.nroTelefono", "nroTelefono")
                 .addSelect("p.nombre","nombre")
                 .addSelect("p.apellido","apellido")
@@ -35,7 +34,6 @@ export class ProfesionalService implements IProfesionalService {
         try {
             const profesional: any = getManager()
                 .createQueryBuilder(Profesional,"p")
-                .addSelect("p.dni", "dni")
                 .addSelect("p.nroTelefono", "nroTelefono")
                 .addSelect("p.nombre", "nombre")
                 .addSelect("p.apellido", "apellido")
@@ -59,7 +57,6 @@ export class ProfesionalService implements IProfesionalService {
                 .insert()
                 .into(Profesional)
                 .values([{
-                    dni: body.dni,
                     nroTelefono: body.nroTelefono,
                     nombre: body.nombre,
                     apellido: body.apellido
