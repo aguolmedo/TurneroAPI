@@ -137,6 +137,45 @@ const schemaPostTurno = {
 
 }
 
+const schemaPutTurno = {
+    idTurno: {
+        custom: {
+            options: async ({ req }) => {
+                const turno = await _turnosService.getById(req.body.idTurno);
+                if (turno) return Promise.resolve();
+                return Promise.reject();},
+            errorMessage: "No existe un turno con ese idTurno"
+        },
+        notEmpty: {
+            errorMessage: "Me tienes q mandar el idTurno si no no puedo saber que turno actualizar",
+        },
+        isInt: {
+            errorMessage: "El idTurno debe ser un Int"
+        }
+    },
+    fechaHoraInicio: {
+        isAfter: {
+            errorMessage: "La fecha ingresada no es valida, estas ingresando un tiempo que ya paso bro, time flies"
+        },
+        isISO8601: {
+            strict: true,
+            errorMessage: "La fecha debe enviarse en formato ISO8601"
+        }
+    },
+    fechaHoraFin: {
+        isISO8601: {
+            strict: true,
+            errorMessage: "La fecha debe enviarse en formato ISO8601"
+        },
+        custom: {
+            options: (value: any, { req }) => {
+                return value > req.body.fechaHoraInicio;
+            },
+            errorMessage: "La fechaHoraFin debe ser DESPUES de fechaHoraInicio"
+        }
+    }
+}
+
 const schemaVoid = {}
 
 
@@ -144,6 +183,7 @@ export const Schema = {
     schemaPostCliente,
     schemaVoid,
     schemaPostProfesional,
-    schemaPostTurno
+    schemaPostTurno,
+    schemaPutTurno
 }
 

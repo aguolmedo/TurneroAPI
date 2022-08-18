@@ -41,11 +41,7 @@ export class TurnosService implements ITurnosService {
                     turnosModelList.push(turnoModel);
                 }
             );
-
-            console.log("-- Se ejecuto una peticion exitosa a /turnos --")
-
             return turnosModelList;
-
         }
         catch (e) {
             return e;
@@ -81,13 +77,25 @@ export class TurnosService implements ITurnosService {
                     turnosModelList.push(turnoModel);
                 }
             );
-            console.log("-- Se ejecuto con exito una peticion a /turno/" + numeroTelefono + " --")
             return turnosModelList;
     }
     catch (e) {
             return e;
 
     }}
+
+    public async getById(idTurno: number) {
+        try {
+            const turno = await getManager()
+                .createQueryBuilder(Turno, "t")
+                .addSelect("t.idTurno", "idTurno")
+                .where("t.idTurno = :idTurno", {idTurno: idTurno})
+                .execute();
+            return turno;
+        } catch (e) {
+           return "El turno no existe: " + e;
+        }
+    }
 
     public async create(body: Turno) {
         try {
@@ -105,6 +113,24 @@ export class TurnosService implements ITurnosService {
                 .execute();
             console.log("-- Se ejecutó con exito una peticion a /turno --")
             return "Turno creado."
+        }
+        catch (e) {
+            return e;
+        }
+    }
+
+    public async modify(body: Turno) {
+        try {
+            await getManager()
+                .createQueryBuilder()
+                .update(Turno)
+                .set({
+                    fechaHoraInicio: body.fechaHoraInicio,
+                    fechaHoraFin: body.fechaHoraFin
+                })
+                .where("idTurno = :idTurno", {idTurno: body.idTurno})
+                .execute();
+            return "Se cambio la fecha del turno con exito";
         }
         catch (e) {
             return e;

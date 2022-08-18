@@ -37,10 +37,21 @@ export async function create(request: Request, response: Response) {
     }
 }
 
+export async function modifyFecha(request: Request, response: Response) {
+    try {
+        let respuesta = await _turnosService.modify(request.body)
+        if (respuesta) return response.status(200).json(respuesta)
+    }
+    catch (error) {
+        return response.status(409).json(error)
+    }
+}
+
 
 export const TurnosServiceController =
     {
         getAll,
         getByCliente,
-        create
+        create,
+        modifyFecha
     }

@@ -66,5 +66,11 @@ export const AppRoutes = [
         method: 'post',
         schema: Schema.schemaPostTurno,
         action: TurnosServiceController.create
+    },
+    {
+        path: '/cambiarFechaTurno',
+        method: 'put',
+        schema: Schema.schemaPutTurno,
+        action: TurnosServiceController.modifyFecha
     }
 ];
